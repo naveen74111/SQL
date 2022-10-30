@@ -1,0 +1,174 @@
+create database movies;
+
+use movies;
+CREATE TABLE Movies (id int, movie_name varchar(30),ticket_price int,location varchar(20),hero varchar(20),budget bigint);
+
+insert into Movies values(1,'bahuabali',250,'navararng', 'prabhas',25000000);
+insert into Movies values(2,'magadheera',270,'ganesh', 'Ramcharan',25000000);
+insert into Movies values(3,'charli777',200,'navararng', 'RakshitShetty',25000000);
+insert into Movies values(4,'mungaru male',300,'Orian Mall', 'prabhas',25000000);
+
+select * from Movies;
+
+
+And operator:
+cond1 cond2 result
+true  false false
+false true false
+true  true true
+
+select * from movies where director = 'shubam' and id=2;
+
+OR operator:
+
+cond1 cond2 result
+true  false  true
+false true   true
+true  true   true
+false false  false
+
+	select * from movies where director = 'hdh' or id = 10;  result is false
+	select * from movies where director = 'hdh' or id =1 or id=2, id = 3;
+
+In operator:
+
+	is used to avoid the multiple data
+	
+	select * from movies where id in(1,2,3);
+	
+	select * from movies where id not in(1,2,3);
+	
+Between operator:
+	will return the result in the range
+	
+	select * from airportdetails where in between 6 and 10;
+	
+Order By :
+	select * from movies order by id ;
+	
+	select * from movies order by id desc ;
+	
+	desc movies;
+	
+Aggregate functions: used to perform the calculation on a column data.
+
+ 1)COUNT: will return the number of rows in a table or column.
+ 2)SUM: It will add all the data in the column.
+ 3)MAX: it will return maximum value in the column.
+ 4)MIN:it will return minimum value in the column.
+ 5)AVG: return the avg value from column.
+	
+	SELECT COUNT(*) FROM movies;
+	
+	SELECT COUNT(*) AS no_of rows from movies;
+	
+	SELECT SUM(bookingAmount) from airportDetails;
+	
+	SELECT MAX(bookingAmount) from airportDetails;
+	
+	SELECT MIN(bookingAmount) from airportDetails;
+	
+	SELECT AVG(bookingAmount) from airportDetails;
+	
+
+	//mn tp loc hero bgt dire	
+	
+ LIKE : IS USED FOR ANY PATTERN MATCHING.
+ %: IT CAN MATCH ANY STRING OF ANY LENGTH. 
+	
+		select * from movies where hero Like 'r%';
+		
+		select * from information_about;
+		
+		select info_name FROM information_about WHERE info_name LIKE 'S%'; being
+	
+		select info_name FROM information_about WHERE info_name LIKE '%a';  ending
+		
+		 select * from movies where hero Like 'r%c%';   being and between 
+		 
+		select UPPER(movie_name) from movies;
+
+		select LOWER(movie_name) from movies;
+
+		select CONCAT(movie_name,hero) as together from movies;
+		 
+		concat : it will merging column's in one row.
+		
+InString:
+	'XWORKZODC'
+	
+	SELECT INSTR('XWORKZODC','K') AS POSITION;   result is 5
+	SELECT INSTR('ABCDEFGHIJKLMNOPQRSTUVWXYZ','z') AS position;		 result is 26
+
+SubStr: 
+  ('BANGLORE',4,4)
+
+	syntax for sub string
+		select substr(stringvalue,Stringposition,noOfCharacters to print);
+	
+	select substr('BANGLORE',2,6) AS  substring;
+
+	
+	
+	Constraints:
+	1)Not null:
+	2)Unique:
+	3)Check:
+	4)Primary Key:
+	
+	Primary Key: *when we apply primary key to multiple columns that combination should not same.
+	
+	
+	forign key: FK  is the column in one table which refers to the primary key of other table.
+	
+	* primary key will always present in the parent table.
+	* foreign key will alwys present in the child table.
+	* primary key values and foreign key  values should be same.
+	
+	create table  bank(b_id int primary key,b_name varchar(30) unique,location varchar(40) unique,manager varchar(50));
+
+	insert into bank values(1001,'HDFC','jp nagar','pooja');
+	insert into bank values(1002,'ICICI','MAJESTIC','VINODA');
+	insert into bank values(1003,'sbi','RJ nagar','pooja');	
+	insert into bank values(1004,'canara','MJ nagar','pooja');
+	insert into bank values(1005,'karnataka bank','prakash nagar','mahesh');
+
+	create table  customer(id int not null, c_name varchar(20) unique, b_id int , acc_type varchar(30), foreign key(b_id) references bank(b_id));
+	
+	LTRIM: remove the leading spaces from the string left side.
+	RTRIM: remove the trailling spaces from the string right side.
+	
+	
+	leading space remove left remove.
+	SELECT LENGTH(name) from election ;
+	select LTRIM(name) from election;
+	select LTRIM(name) from election;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
